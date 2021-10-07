@@ -12,6 +12,12 @@
   display: none;
 }
 
+.empty-cart-img {
+  margin-top: 2rem;
+  opacity: 0.4;
+  max-height: 12rem;
+}
+
 /* ----- End: Header Page Banner ----- */
 
 /*------------ START: MAIN CONTENT ----------- */
@@ -253,7 +259,7 @@ input.discount-input::placeholder {
 .empty-cart-message {
   font-size: 1.125rem;
   color: var(--color-danger);
-  margin: 3rem auto 0 auto;
+  margin: 2rem auto 0 auto;
 }
 
 /* ----- End: Section Shopping Cart ----- */

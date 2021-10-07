@@ -18,8 +18,13 @@ ol.breadcrumb {
   margin-top: 5rem;
 }
 
-.section-bestsellers__btn {
+.section-featured-brands__btn {
   margin-top: 5rem;
+}
+
+.section-bestsellers .slick-dots {
+  position: static;
+  margin: 2rem 0 1.5rem 0;
 }
 
 /*------------ START: HEADER ----------- */

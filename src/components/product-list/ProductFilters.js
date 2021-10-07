@@ -1,26 +1,6 @@
 // Product Filter
 
-import { BRANDS, SEASONS } from "data/filterData";
-
-// Brand Filter
-function BrandFilterItem({
-  brand,
-  brandFilter,
-  activeFilter,
-  brandId,
-  filterId,
-}) {
-  return (
-    <li
-      className={`filter__item filter__brand-item ${
-        activeFilter && brandId === filterId && "active"
-      }`}
-      onClick={() => brandFilter(brand, brandId)}
-    >
-      {brand}
-    </li>
-  );
-}
+import { BRANDS, SEASONS, GENDERS, CONCENTRATIONS } from "data/filterData";
 
 function BrandsFilter({ brandFilter, activeFilter, filterId }) {
   return (
@@ -29,23 +9,19 @@ function BrandsFilter({ brandFilter, activeFilter, filterId }) {
 
       <ul className="filter__brands-list filter__list">
         {BRANDS.map((brand) => (
-          <BrandFilterItem
+          <li
             key={brand.id}
-            brandId={brand.id}
-            brand={brand.name}
-            brandFilter={brandFilter}
-            activeFilter={activeFilter}
-            filterId={filterId}
-          />
+            className={`filter__item filter__brand-item ${
+              activeFilter && brand.id === filterId && "active"
+            }`}
+            onClick={() => brandFilter(brand.name, brand.id)}
+          >
+            {brand.name}
+          </li>
         ))}
       </ul>
     </div>
   );
-}
-
-// Season Filter
-function SeasonFilterItem({ season }) {
-  return <li className="filter__item filter__season-item">{season}</li>;
 }
 
 function SeasonsFilter() {
@@ -55,7 +31,44 @@ function SeasonsFilter() {
 
       <ul className="filter__season-list filter__list">
         {SEASONS.map((season) => (
-          <SeasonFilterItem key={season.id} season={season.name} />
+          <li key={season.id} className="filter__item filter__season-item">
+            {season.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function GendersFilter() {
+  return (
+    <div className="filter-entry filter__gender">
+      <h4 className="section-title filter-title">LỌC THEO GIỚI TÍNH</h4>
+
+      <ul className="filter__gender-list filter__list">
+        {GENDERS.map((gender) => (
+          <li key={gender.id} className="filter__item filter__gender-item">
+            {gender.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ConcentrationsFilter() {
+  return (
+    <div className="filter-entry filter__concentration">
+      <h4 className="section-title filter-title">LỌC THEO NỒNG ĐỘ</h4>
+
+      <ul className="filter__concentration-list filter__list">
+        {CONCENTRATIONS.map((concen) => (
+          <li
+            key={concen.id}
+            className="filter__item filter__concentratio-item"
+          >
+            {concen.name}
+          </li>
         ))}
       </ul>
     </div>
@@ -83,6 +96,8 @@ export default function ProductFilters({
         activeFilter={activeFilter}
         filterId={filterId}
       />
+      <GendersFilter />
+      <ConcentrationsFilter />
       <SeasonsFilter />
     </div>
   );

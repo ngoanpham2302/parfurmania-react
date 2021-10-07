@@ -39,18 +39,17 @@ export default function ProductList() {
     fetchData();
   }, []);
 
-  // Lấy giá trị search input
+  // Get search input
   function getInputValue(event) {
     setInputValue(event.target.value.toLowerCase().trim());
   }
 
-  // Lấy giá trị sort trong select dropdown
+  // Get sort value
   function getSortValue(event) {
     setSortvalue(event.target.value);
   }
 
-  // Tìm kiếm sản phẩm theo tên hoặc thương hiệu
-  // Sắp xếp sản phẩm theo giá
+  // Search products by name or brand, sort products by price
   useEffect(() => {
     let filteredList = [...productsApi];
 

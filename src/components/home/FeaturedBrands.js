@@ -166,7 +166,7 @@ export default function FeaturedBrands() {
         </div>
       </div>
 
-      <button className="section__btn section-bestsellers__btn">
+      <button className="section__btn section-featured-brands__btn">
         <Link to="/">XEM TẤT CẢ THƯƠNG&nbsp;HIỆU</Link>
       </button>
     </section>

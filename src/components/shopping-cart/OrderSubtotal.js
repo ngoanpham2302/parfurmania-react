@@ -1,4 +1,5 @@
 import { convertCurrency } from "components/common/commonFunctions";
+import { Link } from "react-router-dom";
 
 export default function OrderSubtotal({
   tempTotal,
@@ -37,7 +38,9 @@ export default function OrderSubtotal({
           </span>
         </p>
       </div>
-      <button className="section__btn btn-checkout">TIẾN HÀNH ĐẶT HÀNG</button>
+      <button className="section__btn btn-checkout">
+        <Link to="/payment">TIẾN HÀNH ĐẶT HÀNG</Link>
+      </button>
     </div>
   );
 }

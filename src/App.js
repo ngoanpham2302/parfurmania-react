@@ -7,15 +7,18 @@ import Home from "pages/Home";
 import ProductList from "pages/ProductList";
 import ProductDetail from "pages/ProductDetail";
 import ShoppingCart from "pages/ShoppingCart";
+import Payment from "pages/Payment";
 
 import Footer from "components/common/Footer";
 import Newsletters from "components/common/Newsletters";
 import HeaderContents from "components/common/HeaderContents";
+import OrderComplete from "pages/OrderComplete";
 
 export const CartContext = createContext();
 
 function App() {
   const [cartQuantity, setCartQuantity] = useState(0);
+
   useEffect(() => {
     let initialQuantity = 0;
     const cartStorage = localStorage.getItem("cart");
@@ -50,6 +53,14 @@ function App() {
 
             <Route path="/shopping-cart">
               <ShoppingCart />
+            </Route>
+
+            <Route path="/payment">
+              <Payment />
+            </Route>
+
+            <Route path="/order-complete">
+              <OrderComplete />
             </Route>
 
             <Route exact path="/">

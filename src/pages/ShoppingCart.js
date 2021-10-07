@@ -10,6 +10,7 @@ import OrderSubtotal from "components/shopping-cart/OrderSubtotal";
 import OrderDiscount from "components/shopping-cart/OrderDiscount";
 import RemoveAllModal from "components/shopping-cart/RemoveAllModal";
 import PageBanner from "components/common/PageBanner";
+import emptyCartImg from "images/empty-cart.png";
 
 // Shopping Cart Page
 export default function ShoppingCart() {
@@ -44,8 +45,20 @@ export default function ShoppingCart() {
     D30: 30,
   };
 
+  const orderPayment = {
+    tempAmount: tempTotal,
+    vatAmount: vat,
+    discountAmount: discount,
+    finalAmount: finalTotal,
+    shipfeeAmount: 30000,
+    finalWithShip: finalTotal + 30000,
+    shipMethod: "standard",
+    paymentMethod: "visa",
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(shoppingList));
+    localStorage.setItem("orderTotal", JSON.stringify(orderPayment));
 
     let totalQuantity = 0;
     [...shoppingList].forEach((product) => {
@@ -196,9 +209,16 @@ export default function ShoppingCart() {
                     />
                   ))
                 ) : (
-                  <p className="empty-cart-message text-center">
-                    Giỏ hàng của bạn đang trống!
-                  </p>
+                  <>
+                    <img
+                      className="empty-cart-img"
+                      src={emptyCartImg}
+                      alt="empty-cart"
+                    />
+                    <p className="empty-cart-message text-center">
+                      Chưa có sản phẩm nào trong giỏ hàng!
+                    </p>
+                  </>
                 )}
               </div>
             </div>
@@ -224,22 +244,24 @@ export default function ShoppingCart() {
             </div>
           </div>
 
-          <div className="order-container">
-            <OrderDiscount
-              isValidDiscount={isValidDiscount}
-              discountFb={discountFb}
-              inputDiscount={inputDiscount}
-              getDiscountValue={getDiscountValue}
-              applyDiscount={applyDiscount}
-            />
+          {shoppingList.length > 0 && (
+            <div className="order-container">
+              <OrderDiscount
+                isValidDiscount={isValidDiscount}
+                discountFb={discountFb}
+                inputDiscount={inputDiscount}
+                getDiscountValue={getDiscountValue}
+                applyDiscount={applyDiscount}
+              />
 
-            <OrderSubtotal
-              tempTotal={tempTotal}
-              vat={vat}
-              discount={discount}
-              finalTotal={finalTotal}
-            />
-          </div>
+              <OrderSubtotal
+                tempTotal={tempTotal}
+                vat={vat}
+                discount={discount}
+                finalTotal={finalTotal}
+              />
+            </div>
+          )}
         </div>
       </section>
 

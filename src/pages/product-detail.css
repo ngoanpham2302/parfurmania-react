@@ -495,9 +495,9 @@
   overflow-y: hidden;
 }
 
+/* Let the content decide the height, show arrows */
 #main .tab-content > .active,
 #main .pill-content > .active {
-  /* Let the content decide the height, show arrows */
   height: auto;
   overflow-y: visible;
 }

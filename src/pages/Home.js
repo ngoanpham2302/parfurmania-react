@@ -10,6 +10,7 @@ import LatestBlogs from "components/home/LatestBlogs";
 import CustomerPictures from "components/home/CustomerPictures";
 import FeaturedBrands from "components/home/FeaturedBrands";
 import HeroContent from "components/home/HeroContent";
+import BestSellers from "components/home/BestSellers";
 
 export default function Home() {
   AOS.init();
@@ -18,6 +19,7 @@ export default function Home() {
     <>
       <HeroContent />
       <About />
+      <BestSellers />
       <FragranceFamilies />
       <FeaturedBrands />
       <LatestBlogs />

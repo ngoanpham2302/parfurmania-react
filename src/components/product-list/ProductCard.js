@@ -40,17 +40,19 @@ export default function ProductCard({
             </p>
           </Link>
 
-          <button
-            className={`btn-addtocart product-card__btn ${
-              !status && "disabled"
-            }`}
-            onClick={() => addToCart(id, imgSrc, fullName)}
-          >
-            <span className="cart-icon">
-              <Icon icon="clarity:shopping-cart-line" />
-            </span>
-            <span>Thêm vào giỏ hàng</span>
-          </button>
+          {status ? (
+            <button
+              className="btn-addtocart product-card__btn"
+              onClick={() => addToCart(id, imgSrc, fullName)}
+            >
+              <span className="cart-icon">
+                <Icon icon="clarity:shopping-cart-line" />
+              </span>
+              <span>Thêm vào giỏ hàng</span>
+            </button>
+          ) : (
+            <p className="unavailable-label">Hết hàng</p>
+          )}
         </div>
       </div>
     </div>
